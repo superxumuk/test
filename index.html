@@ -1,0 +1,32 @@
+﻿<html >
+  <head>
+    <title>test</title>
+    <link href="css/bootstrap.css" rel="stylesheet" /> 
+      <script src="scripts/angular.js"></script>
+      <script src="scripts/app.js"></script>
+      <script src="scripts/controllers/usersCtrl.js"></script>
+  </head>
+
+  <body>
+<div class="container"  ng-app="clientsApp" ng-controller="clientsCtrl" > 
+	<table class="table"> 
+        <thead> 
+            <tr> 
+                <th>Id</th> 
+                <th>FirstName</th> 
+                <th>LastName</th> 
+                <th>comment</th> 
+            </tr> 
+        </thead> 
+        <tbody ng-repeat="client in clients"> 
+           <tr> 
+                <td>{{ client.id }}</td> 
+                <td>{{ client.fname }}</td> 
+                <td>{{ client.lname }}</td> 
+                <td>{{ client.comt }}</td>
+            </tr>  
+         </tbody> 
+    </table>  
+</div>
+  </body>
+</html>
