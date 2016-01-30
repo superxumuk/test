@@ -8,7 +8,9 @@
     ]; 
 	
 	$scope.create = function() { 
-		$scope.newClient.id = $scope.clients.length + 1; 
+	 var index = $scope.clients.length -1; 
+	 var index2 = $scope.clients[index].id; 
+		$scope.newClient.id = index2 +1; 
 		$scope.clients.push($scope.newClient); 
 		$scope.newClient = null; 
 	};
@@ -17,4 +19,13 @@
 		var index = $scope.clients.indexOf(client); 
 		$scope.clients.splice(index, 1); 
 	};
+
+	$scope.edit = function(client) {
+		$scope.activeClient = client;
+	}; 
+	
+	$scope.update = function(client) { 
+		$scope.activeClient = null; 
+	};
+
 });
