@@ -9,6 +9,7 @@
 
   <body>
 <div class="container"  ng-app="clientsApp" ng-controller="clientsCtrl" > 
+  <form name='clientEdit' role='form'> 
 	<table class="table"> 
         <thead> 
             <tr> 
@@ -16,19 +17,31 @@
                 <th>FirstName</th> 
                 <th>LastName</th> 
                 <th>comment</th> 
-				<th>Action</th>
+                <th>Action</th>
             </tr> 
         </thead> 
         <tbody ng-repeat="client in clients"> 
-           <tr> 
-                <td>{{ client.id }}</td> 
-                <td>{{ client.fname }}</td> 
-                <td>{{ client.lname }}</td> 
-                <td>{{ client.comt }}</td>
-				<td><a class='btn btn-danger' href='' ng-click='delete(client)'> Удалить </a> </td>
+           <tr ng-if='client != activeClient'> 
+                <td ng-if='client != activeClient'>{{ client.id }}</td> 
+                <td ng-if='client != activeClient'>{{ client.fname }}</td> 
+                <td ng-if='client != activeClient'>{{ client.lname }}</td> 
+                <td ng-if='client != activeClient'>{{ client.comt }}</td>
+                <td>
+                	<a class='btn btn-primary' href='' ng-click='edit(client)'> Редактировать </a>
+                	<a class='btn btn-danger' href='' ng-click='delete(client)'> Удалить </a>
+                </td> 
             </tr>  
-         </tbody> 
-    </table> 
+            <tr ng-if='client == activeClient'> 
+                <td ng-if='client == activeClient'>{{ client.id }}</td> 
+                <td ng-if='client == activeClient'><input class='form-control' ng-model='client.fname' type='text' required maxlength='254'></td> 
+                <td ng-if='client == activeClient'><input class='form-control' ng-model='client.lname' type='text' required maxlength='254'></td> 
+                <td ng-if='client == activeClient'><textarea class='form-control' ng-model='client.comt' ></textarea></td>
+                <td> <button class='btn btn-primary' ng-click='update(client)' ng-disabled='clientEdit.$invalid' > Обновить </button> </td>
+            </tr> 
+   
+        </tbody> 
+    </table>  
+   </form>
     <div class="page-header"> 
         <h1>add new Person</h1>
 <form name='clientForm' novalidate role='form'> 
