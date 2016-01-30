@@ -16,6 +16,7 @@
                 <th>FirstName</th> 
                 <th>LastName</th> 
                 <th>comment</th> 
+				<th>Action</th>
             </tr> 
         </thead> 
         <tbody ng-repeat="client in clients"> 
@@ -24,6 +25,7 @@
                 <td>{{ client.fname }}</td> 
                 <td>{{ client.lname }}</td> 
                 <td>{{ client.comt }}</td>
+				<td><a class='btn btn-danger' href='' ng-click='delete(client)'> Удалить </a> </td>
             </tr>  
          </tbody> 
     </table> 
